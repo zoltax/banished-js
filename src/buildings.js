@@ -16,19 +16,19 @@ function Building() {
 function Buildings() {
 
 
-    var buildings = [];
+    this.buildings = [];
 
-    var add = function(name)
+    this.add = function(name)
     {
-        building = new Building()
-        building.setName("House")
-        buildings.push(building)
+        this.building = new Building()
+        this.building.setName("House")
+        this.buildings.push(building)
     }
 
     return {
 
-        'buildings' : buildings,
-        'add' : function(name) {add(name)}
+        //'buildings' : buildings,
+        //'add' : function(name) {add(name)}
 
     }
 }

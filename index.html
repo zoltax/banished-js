@@ -1,16 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="src/tags/app.tag" type="riot/tag"></script>
     <script src="src/lib/jquery-2.2.3.js"></script>
+    <script src="src/lib/riot+compiler.js"></script>
+    <script src="js/bootstrap.js"></script>
     <script src="src/board.js"></script>
     <script src="src/engine.js"></script>
     <script src="src/buildings.js"></script>
     <script src="src/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <meta charset="UTF-8">
     <title>Banished - js</title>
 </head>
 
+<script>
+    riot.mount('*')
+</script>
+
 <body>
+
+<div class="container">
+    <div class="row">
+        <hello-world></hello-world>
+        <!--<div class="col-md-2">Number of buildings</div>-->
+        <!--<div class="col-md-2" id="number_of_buildings">Number of buildings</div>-->
+    </div>
+</div>
+
 </body>
 
 </html>

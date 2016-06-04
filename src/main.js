@@ -1,6 +1,6 @@
 $(document).ready(function()
     {
-        var e =  Engine();
+        var e = Engine();
         e.init();
     }
 );
