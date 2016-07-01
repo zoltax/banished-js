@@ -16,7 +16,15 @@ Engine.prototype.initLocalStorage = function () {
 
 }
 
+
+Engine.prototype.initBoard = function () {
+    this.board = new Board();
+}
+
 Engine.prototype.init = function () {
     this.initLocalStorage();
+    this.initBoard();
     console.log("init");
+
+    this.board.nameBox('Filip');
 }
