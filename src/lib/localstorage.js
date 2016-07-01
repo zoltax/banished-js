@@ -11,11 +11,6 @@ LocalStorageWrapper.prototype.init = function () {
     }
 }
 
-LocalStorageWrapper.prototype.test = function () {
-    console.log("local storage test");
-}
-
-
 LocalStorageWrapper.prototype.get = function (item) {
     return localStorage.item
 }

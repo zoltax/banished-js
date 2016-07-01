@@ -1,0 +1,7 @@
+#game {
+    width       :95%;
+    height      :90%;
+    min-height  :900px;
+    border      :1px solid black;
+    margin      :10px auto;
+}
