@@ -38,11 +38,7 @@ Engine.prototype.init = function () {
     this.initLocalStorage();
     this.initPlayer();
     this.initBoard();
-
     this.initPlayerName();
-    console.log("init");
 
     this.board.draw();
-
-    // this.board.nameBox(this.player.getName());
 }
