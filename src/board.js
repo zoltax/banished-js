@@ -3,17 +3,27 @@ function Board() {
     this.x = 10;
     this.y = 10;
 
-    this.buildings = [this.x][this.y];
+    this.initializeBuildings(this.x, this.y)
+    this.buildEventHandling();
 
-    var b = new Building();
+    var b = new Building('Sawmill');
 
-    this.buildings[0][0] = new Building();
+
+    this.buildings[4][0] = b;
 
     this.player = null;
 
     if ( ! this instanceof Board )
         return new Board();
 
+}
+
+Board.prototype.initializeBuildings = function (x, y) {
+    this.buildings = []
+
+    for(var i=0; i<x; i++) {
+        this.buildings[i] = new Array(y);
+    }
 }
 
 Board.prototype.setPlayer = function (player) {
@@ -33,25 +43,42 @@ Board.prototype.nameBox = function (name) {
 
 }
 
+Board.prototype.buildEventHandling = function () {
 
-Board.prototype.addBuilding = function (x, y) {
+    var self = this;
 
-    console.log('ok')
+    $( document ).ready(function() {
+        $(".build_link").click(function (event) {
 
+            console.log(event.target);
+
+            self.addBuilding(1,2);
+        });
+    });
+
+}
+
+Board.prototype.addBuilding = function () {
+    console.log('adding building')
 }
 
 Board.prototype.drawCity = function () {
 
-
     var city  = _.template('<table class="table table-bordered"><tbody><%= text %></tbody></table>');
-    var field = _.template('<td onclick="" class="field"><%= text %></td>');
+    var field = _.template('<td class="field"><%= text %></td>');
+    var build_link = _.template('<a href="#" class="build_link" >Build</a>');
 
     var b = '';
 
-    for ( var i = 0 ; i < this.y; i++ ) {
+    // beauty of the javascript :D
+    for ( var i = 0 ; i < this.x; i++ ) {
         b += '<tr>';
-        for ( var j = 0; j < this.x; j++ ) {
-            b += field({text: i + ':' + j});
+        for ( var j = 0; j < this.y; j++ ) {
+            var t = build_link();
+            if ( this.buildings[j][i]) {
+                t = this.buildings[j][i].getType();
+            }
+            b += field({text: t});
         }
         b += '</tr>';
 

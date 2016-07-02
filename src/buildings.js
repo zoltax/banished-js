@@ -9,12 +9,8 @@ function Building(type) {
 
 }
 
-Building.prototype.setName = function (name) {
-    this.name = name;
-}
-
-Building.prototype.getName = function () {
-    return this.name;
+Building.prototype.getType = function () {
+    return this.buildingType;
 }
 
 Building.prototype.getLetter = function () {
