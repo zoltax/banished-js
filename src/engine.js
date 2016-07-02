@@ -1,5 +1,7 @@
 function Engine() {
 
+    this.fps = 1;
+
     if (! this instanceof Engine)
         return new Engine();
 
@@ -19,11 +21,11 @@ Engine.prototype.initPlayer = function () {
 Engine.prototype.initBoard = function () {
     this.board = new Board();
     this.board.setPlayer(this.player);
-    this.board.setResource(this.resource);
+    this.board.setResources(this.resources);
 }
 
-Engine.prototype.initResource = function () {
-    this.resource = new Resource();
+Engine.prototype.initResources = function () {
+    this.resources = new Resources();
 }
 
 Engine.prototype.initPlayerName = function () {
@@ -42,9 +44,25 @@ Engine.prototype.initPlayerName = function () {
 Engine.prototype.init = function () {
     this.initLocalStorage();
     this.initPlayer();
-    this.initResource();
+    this.initResources();
     this.initBoard();
     this.initPlayerName();
 
     this.board.draw();
+}
+
+
+Engine.prototype.run = function () {
+    // console.log("run");
+    // window.setInterval(1000)
+    // this.run();
+
+    self = this;
+
+    setInterval(function () {
+        //console.log("ok");
+        self.board.draw();
+    },1000)
+
+
 }

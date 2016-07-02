@@ -23,8 +23,8 @@ Board.prototype.setPlayer = function (player) {
     this.player = player;
 }
 
-Board.prototype.setResource = function (resource) {
-    this.resource = resource;
+Board.prototype.setResources = function (resources) {
+    this.resources = resources;
 }
 
 Board.prototype.initializeBuildings = function (x, y) {
@@ -50,13 +50,20 @@ Board.prototype.drawNameBox = function (name) {
 }
 
 Board.prototype.drawResources = function () {
-    var resourcesBox = _.template('<p><b>Wood:</b> <%= wood %> <b>Stone:</b> <%= stone %> <b>Food:</b> <%= food %> <b>Gold:</b> <%= gold %></p>')
+    var resourcesBox = _.template('' +
+        '<p>' +
+            '<b>Wood: </b>  <%= wood  %> ' +
+            '<b>Stone: </b> <%= stone %> ' +
+            '<b>Food: </b>  <%= food  %> ' +
+            '<b>Gold: </b>  <%= gold  %> ' +
+        '</p>')
+
     $("#resource").html(resourcesBox(
         {
-            wood: this.resource.getWood(),
-            stone: this.resource.getStone(),
-            food: this.resource.getFood(),
-            gold: this.resource.getGold(),
+            wood:   this.resources.getWood(),
+            stone:  this.resources.getStone(),
+            food:   this.resources.getFood(),
+            gold:   this.resources.getGold(),
         }
     ))
 }
