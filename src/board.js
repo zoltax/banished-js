@@ -3,6 +3,12 @@ function Board() {
     this.x = 10;
     this.y = 10;
 
+    this.buildings = [this.x][this.y];
+
+    var b = new Building();
+
+    this.buildings[0][0] = new Building();
+
     this.player = null;
 
     if ( ! this instanceof Board )
@@ -28,11 +34,17 @@ Board.prototype.nameBox = function (name) {
 }
 
 
+Board.prototype.addBuilding = function (x, y) {
+
+    console.log('ok')
+
+}
+
 Board.prototype.drawCity = function () {
 
 
     var city  = _.template('<table class="table table-bordered"><tbody><%= text %></tbody></table>');
-    var field = _.template('<td><%= text %></td>');
+    var field = _.template('<td onclick="" class="field"><%= text %></td>');
 
     var b = '';
 
@@ -46,6 +58,7 @@ Board.prototype.drawCity = function () {
     }
 
     $("#city").html(city({text: b}));
+
 
 }
 
