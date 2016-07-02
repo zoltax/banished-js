@@ -37,15 +37,28 @@ Board.prototype.initializeBuildings = function (x, y) {
 
 Board.prototype.draw = function () {
 
-    this.nameBox(this.player.getName())
+    this.drawNameBox(this.player.getName())
+    this.drawResources();
     this.drawCity();
 }
 
-Board.prototype.nameBox = function (name) {
+Board.prototype.drawNameBox = function (name) {
 
     var nameBox = _.template('<p class="name_box"> Player name: <b><%=  name %></b></p>');
     $("#name").html(nameBox({name: name}))
 
+}
+
+Board.prototype.drawResources = function () {
+    var resourcesBox = _.template('<p><b>Wood:</b> <%= wood %> <b>Stone:</b> <%= stone %> <b>Food:</b> <%= food %> <b>Gold:</b> <%= gold %></p>')
+    $("#resource").html(resourcesBox(
+        {
+            wood: this.resource.getWood(),
+            stone: this.resource.getStone(),
+            food: this.resource.getFood(),
+            gold: this.resource.getGold(),
+        }
+    ))
 }
 
 Board.prototype.buildEventHandling = function () {
