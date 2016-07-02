@@ -18,16 +18,21 @@ function Board() {
 
 }
 
+
+Board.prototype.setPlayer = function (player) {
+    this.player = player;
+}
+
+Board.prototype.setResource = function (resource) {
+    this.resource = resource;
+}
+
 Board.prototype.initializeBuildings = function (x, y) {
     this.buildings = []
 
     for(var i=0; i<x; i++) {
         this.buildings[i] = new Array(y);
     }
-}
-
-Board.prototype.setPlayer = function (player) {
-    this.player = player;
 }
 
 Board.prototype.draw = function () {
@@ -85,7 +90,6 @@ Board.prototype.drawCity = function () {
     }
 
     $("#city").html(city({text: b}));
-
 
 }
 

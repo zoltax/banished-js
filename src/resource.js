@@ -18,8 +18,8 @@ Resource.prototype.getStone = function () {
     return this.stone;
 }
 
-Resource.prototype.getFood = function () {
-    return this.food;
+Resource.prototype.getWood = function () {
+    return this.wood;
 }
 
 Resource.prototype.getGold = function () {
