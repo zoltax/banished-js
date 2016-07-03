@@ -3,13 +3,7 @@ function Board() {
     this.x = 10;
     this.y = 10;
 
-    this.initializeBuildings(this.x, this.y)
-    this.buildEventHandling();
-
     var b = new Building('Sawmill');
-
-
-    this.buildings[4][0] = b;
 
     this.player = null;
 
@@ -18,6 +12,13 @@ function Board() {
 
 }
 
+Board.prototype.getX = function () {
+    return this.x;
+}
+
+Board.prototype.getY = function () {
+    return this.y;
+}
 
 Board.prototype.setPlayer = function (player) {
     this.player = player;
@@ -27,13 +28,10 @@ Board.prototype.setResources = function (resources) {
     this.resources = resources;
 }
 
-Board.prototype.initializeBuildings = function (x, y) {
-    this.buildings = []
-
-    for(var i=0; i<x; i++) {
-        this.buildings[i] = new Array(y);
-    }
+Board.prototype.setBuildings = function (buildings) {
+    this.buildings = buildings;
 }
+
 
 Board.prototype.draw = function () {
 
@@ -68,20 +66,7 @@ Board.prototype.drawResources = function () {
     ))
 }
 
-Board.prototype.buildEventHandling = function () {
 
-    var self = this;
-
-    $( document ).ready(function() {
-        $(".build_link").click(function (event) {
-
-            console.log(event.target);
-
-            self.addBuilding(1,2);
-        });
-    });
-
-}
 
 Board.prototype.addBuilding = function () {
     console.log('adding building')
@@ -95,13 +80,15 @@ Board.prototype.drawCity = function () {
 
     var b = '';
 
+    var buildings = this.buildings.getBuildings();
+
     // beauty of the javascript :D
     for ( var i = 0 ; i < this.x; i++ ) {
         b += '<tr>';
         for ( var j = 0; j < this.y; j++ ) {
             var t = build_link();
-            if ( this.buildings[j][i]) {
-                t = this.buildings[j][i].getType();
+            if ( buildings[j][i]) {
+                t = buildings[j][i].getType();
             }
             b += field({text: t});
         }

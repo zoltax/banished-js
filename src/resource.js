@@ -1,6 +1,10 @@
 function Resource(type, value) {
     this.type   = type;
     this.value  = value;
+
+    if ( ! this instanceof Resource)
+        return new Resource();
+
 }
 
 

@@ -28,6 +28,17 @@ Engine.prototype.initResources = function () {
     this.resources = new Resources();
 }
 
+Engine.prototype.initGame = function () {
+    this.game = new Game();
+    // this.game.setBulidings()
+    this.game.setResources(this.resources)
+}
+
+Engine.prototype.initBuildings = function () {
+    this.buildings = new Buildings(this.board.getX(), this.board.getY());
+    this.board.setBuildings(this.buildings);
+}
+
 Engine.prototype.initPlayerName = function () {
 
     if ( this.localstorage.get(name) ) {
@@ -38,7 +49,6 @@ Engine.prototype.initPlayerName = function () {
 
     this.player.setName(this.localstorage.get(name))
 
-
 }
 
 Engine.prototype.init = function () {
@@ -46,7 +56,10 @@ Engine.prototype.init = function () {
     this.initPlayer();
     this.initResources();
     this.initBoard();
+    this.initBuildings()
+    this.initGame();
     this.initPlayerName();
+
 
     this.board.draw();
 }

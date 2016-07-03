@@ -31,12 +31,38 @@ Building.prototype.levelDown = function () {
     }
 }
 
-function Buildings() {
+function Buildings(x, y) {
 
     if ( ! this instanceof Buildings)
         return new Buildings();
 
     this.buildings = []
+
+    for(var i=0; i<x; i++) {
+        this.buildings[i] = new Array(y);
+    }
+
+    var b = new Building('Sawmill');
+
+    this.buildings[4][0] = b;
+}
+
+Buildings.prototype.getBuildings = function () {
+    return this.buildings;
+}
+
+Buildings.prototype.buildEventHandling = function () {
+
+    var self = this;
+
+    $( document ).ready(function() {
+        $(".build_link").click(function (event) {
+
+            console.log(event.target);
+
+            self.addBuilding(1,2);
+        });
+    });
 
 }
 
