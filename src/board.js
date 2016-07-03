@@ -67,7 +67,6 @@ Board.prototype.drawResources = function () {
 }
 
 
-
 Board.prototype.addBuilding = function () {
     console.log('adding building')
 }

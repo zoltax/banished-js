@@ -1,5 +1,9 @@
 function Game() {
 
+    /**
+     *
+     * @type Resources {null}
+     */
     this.resources = null;
     this.buildings = null;
 
@@ -20,6 +24,8 @@ Game.prototype.setBulidings = function (buildings) {
 
 Game.prototype.update = function () {
 
+    var buildings = this.buildings.getBuildings();
 
+    this.resources.setWood(this.resources.getWood() + 1);
 
 }

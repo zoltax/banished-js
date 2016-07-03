@@ -30,8 +30,8 @@ Engine.prototype.initResources = function () {
 
 Engine.prototype.initGame = function () {
     this.game = new Game();
-    // this.game.setBulidings()
-    this.game.setResources(this.resources)
+    this.game.setBulidings(this.buildings);
+    this.game.setResources(this.resources);
 }
 
 Engine.prototype.initBuildings = function () {
@@ -75,6 +75,7 @@ Engine.prototype.run = function () {
     setInterval(function () {
         //console.log("ok");
         self.board.draw();
+        self.game.update();
     },1000)
 
 

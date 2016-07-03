@@ -3,6 +3,7 @@ function Building(type) {
     this.buildingType = type;
     this.name = '';
     this.level = 0;
+    this.revenue = 0;
 
     if ( ! this instanceof Building)
         return new Building();
@@ -11,6 +12,10 @@ function Building(type) {
 
 Building.prototype.getType = function () {
     return this.buildingType;
+}
+
+Building.prototype.setRevenue = function (revenue) {
+    this.revenue = revenue;
 }
 
 Building.prototype.getLetter = function () {
@@ -43,6 +48,7 @@ function Buildings(x, y) {
     }
 
     var b = new Building('Sawmill');
+    b.setRevenue(3600)
 
     this.buildings[4][0] = b;
 }

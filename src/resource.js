@@ -32,6 +32,10 @@ Resources.prototype.getWood = function () {
     return this.wood;
 }
 
+Resources.prototype.setWood = function (wood) {
+    this.wood = wood;
+}
+
 Resources.prototype.getGold = function () {
     return this.gold;
 }
