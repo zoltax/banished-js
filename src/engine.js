@@ -62,6 +62,8 @@ Engine.prototype.init = function () {
 
 
     this.board.draw();
+
+    this.game.update();
 }
 
 

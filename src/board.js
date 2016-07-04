@@ -79,7 +79,7 @@ Board.prototype.drawCity = function () {
 
     var b = '';
 
-    var buildings = this.buildings.getBuildings();
+    var buildings = this.buildings.getBuildingsMap();
 
     // beauty of the javascript :D
     for ( var i = 0 ; i < this.x; i++ ) {

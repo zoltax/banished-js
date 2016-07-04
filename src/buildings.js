@@ -18,6 +18,10 @@ Building.prototype.setRevenue = function (revenue) {
     this.revenue = revenue;
 }
 
+Building.prototype.getRevenue = function () {
+    return this.revenue;
+}
+
 Building.prototype.getLetter = function () {
     return this.buildingType[0];
 }
@@ -48,13 +52,27 @@ function Buildings(x, y) {
     }
 
     var b = new Building('Sawmill');
-    b.setRevenue(3600)
+    b.setRevenue(3800)
 
     this.buildings[4][0] = b;
 }
 
-Buildings.prototype.getBuildings = function () {
+Buildings.prototype.getBuildingsMap = function () {
     return this.buildings;
+}
+
+Buildings.prototype.getBuildings = function () {
+    var buildings = [];
+
+    this.buildings.forEach(function(row) {
+        row.forEach(function (column) {
+            if ( column ) {
+                buildings.push(column);
+            }
+        })
+    })
+
+    return buildings;
 }
 
 Buildings.prototype.buildEventHandling = function () {

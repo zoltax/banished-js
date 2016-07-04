@@ -20,6 +20,14 @@ Game.prototype.setBulidings = function (buildings) {
 }
 
 Game.prototype.update = function () {
+    var self = this;
     var buildings = this.buildings.getBuildings();
-    this.resources.setWood(this.resources.getWood() + 1.47);
+
+    buildings.forEach(function (building) {
+
+        if ( building.getType() == 'Sawmill') {
+            self.resources.setWood(self.resources.getWood() + ( building.getRevenue() ) / 3600)
+        }
+    })
+
 }
