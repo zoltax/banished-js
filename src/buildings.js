@@ -55,6 +55,8 @@ function Buildings(x, y) {
     b.setRevenue(3800)
 
     this.buildings[4][0] = b;
+
+    this.buildEventHandling();
 }
 
 Buildings.prototype.getBuildingsMap = function () {
@@ -75,6 +77,12 @@ Buildings.prototype.getBuildings = function () {
     return buildings;
 }
 
+Buildings.prototype.addBuilding = function (x,y) {
+    var b = new Building('Sawmill');
+    b.setRevenue(3800)
+    this.buildings[x][y] = b;
+}
+
 Buildings.prototype.buildEventHandling = function () {
 
     var self = this;
@@ -82,9 +90,11 @@ Buildings.prototype.buildEventHandling = function () {
     $( document ).ready(function() {
         $(".build_link").click(function (event) {
 
-            console.log(event.target);
+            var target = event.target;
+            var x = $(target).attr('x');
+            var y = $(target).attr('y');
 
-            self.addBuilding(1,2);
+            self.addBuilding(x,y);
         });
     });
 

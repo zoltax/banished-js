@@ -38,6 +38,7 @@ Board.prototype.draw = function () {
     this.drawNameBox(this.player.getName())
     this.drawResources();
     this.drawCity();
+    this.buildings.buildEventHandling();
 }
 
 Board.prototype.drawNameBox = function (name) {
@@ -58,24 +59,20 @@ Board.prototype.drawResources = function () {
 
     $("#resource").html(resourcesBox(
         {
-            wood:   this.resources.getWood(),
-            stone:  this.resources.getStone(),
-            food:   this.resources.getFood(),
-            gold:   this.resources.getGold(),
+            wood:   parseInt(this.resources.getWood()),
+            stone:  parseInt(this.resources.getStone()),
+            food:   parseInt(this.resources.getFood()),
+            gold:   parseInt(this.resources.getGold()),
         }
     ))
 }
 
 
-Board.prototype.addBuilding = function () {
-    console.log('adding building')
-}
-
 Board.prototype.drawCity = function () {
 
     var city  = _.template('<table class="table table-bordered"><tbody><%= text %></tbody></table>');
     var field = _.template('<td class="field"><%= text %></td>');
-    var build_link = _.template('<a href="#" class="build_link" >Build</a>');
+    var build_link = _.template('<a href="#" class="build_link" x="<%=x%>" y="<%=y%>">Build</a>');
 
     var b = '';
 
@@ -85,7 +82,12 @@ Board.prototype.drawCity = function () {
     for ( var i = 0 ; i < this.x; i++ ) {
         b += '<tr>';
         for ( var j = 0; j < this.y; j++ ) {
-            var t = build_link();
+            var t = build_link(
+                {
+                    x:j,
+                    y:i
+                }
+            );
             if ( buildings[j][i]) {
                 t = buildings[j][i].getType();
             }
