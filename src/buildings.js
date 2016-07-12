@@ -80,7 +80,7 @@ Buildings.prototype.getBuildings = function () {
 Buildings.prototype.addBuilding = function (x,y) {
     var b = new Building('Sawmill');
     b.setRevenue(3800)
-    this.buildings[x][y] = b;
+    this.buildings[x][y]
 }
 
 Buildings.prototype.buildEventHandling = function () {
