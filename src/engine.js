@@ -52,6 +52,7 @@ Engine.prototype.initPlayerName = function () {
 }
 
 Engine.prototype.init = function () {
+
     this.initLocalStorage();
     this.initPlayer();
     this.initResources();

@@ -1,8 +1,11 @@
+var engine = null;
+
 $(document).ready(function()
     {
 
-        var e = new Engine();
-        e.init();
-        e.run();
+        engine = new Engine();
+        engine.init();
+        engine.run();
+
     }
 );

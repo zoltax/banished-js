@@ -94,7 +94,11 @@ Buildings.prototype.buildEventHandling = function () {
             var x = $(target).attr('x');
             var y = $(target).attr('y');
 
+            engine.board.clicked_x = x;
+            engine.board.clicked_y = y;
+
             self.addBuilding(x,y);
+
         });
     });
 

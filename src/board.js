@@ -1,3 +1,8 @@
+function Point(x,y) {
+    this.x = x;
+    this.y = y;
+}
+
 function Board() {
 
     this.x = 10;
