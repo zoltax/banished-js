@@ -1,3 +1,21 @@
+var BUILDING_DB = {
+    'sawmill': {
+        'icon': 'axe.png',
+        // should be resource Object :)
+        'cost': {
+            'wood' : 10
+        },
+
+    },
+    'house': {
+        'icon' : 'house.png',
+        'cost' : {
+            'gold': 10
+        }
+    }
+}
+
+
 function Building(type) {
 
     this.buildingType = type;
@@ -57,6 +75,10 @@ function Buildings(x, y) {
     this.buildings[4][0] = b;
 
     this.buildEventHandling();
+
+    this.db = BUILDING_DB;
+
+    console.log(this.db.sawmill)
 }
 
 Buildings.prototype.getBuildingsMap = function () {
