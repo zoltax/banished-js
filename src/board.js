@@ -74,7 +74,7 @@ Board.prototype.drawResources = function () {
 Board.prototype.drawCity = function () {
 
     var city  = _.template('<table class="table table-bordered"><tbody><%= text %></tbody></table>');
-    var field = _.template('<td class="field"><img src="/assets/<%= src %>" width="32px" height="32px" /><%= text %></td>');
+    var field = _.template('<td class="field"><img src="assets/<%= src %>" width="32px" height="32px" /><%= text %></td>');
     // var build_link = _.template('<a href="#" class="build_link" x="<%=x%>" y="<%=y%>">Build</a>');
     var build_link = _.template('<a href="#modal" class="build_link" x="<%=x%>" y="<%=y%>">Build</a>');
 
