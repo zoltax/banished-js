@@ -95,7 +95,7 @@ Board.prototype.drawCity = function () {
                 }
             );
 
-            var img = '';
+            var img = 'x.png';
 
             if ( buildings[j][i]) {
                 t = buildings[j][i].getType();
