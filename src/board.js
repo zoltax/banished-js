@@ -59,7 +59,7 @@ Board.prototype.drawResources = function () {
             '<b>Food: </b>  <%= food  %> ' +
             '<b>Gold: </b>  <%= gold  %> ' +
         '</p>');
-
+    
     $("#resource").html(resourcesBox(
         {
             wood:   parseInt(this.resources.getWood()),

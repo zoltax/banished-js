@@ -8,34 +8,47 @@ function Resource(type, value) {
 }
 
 
-function Resources() {
+function Resources(wood, food, gold, stone) {
 
-    this.wood   = 0;
-    this.stone  = 0;
-    this.food   = 0;
-    this.gold   = 0;
+    this.wood   = wood;
+    this.stone  = stone;
+    this.food   = food;
+    this.gold   = gold;
 
     if ( ! this instanceof Resources)
         return new Resources();
+
+    this.getFood = function () {
+        return this.food;
+    }
+
+    this.setFood = function (food) {
+        this.food = food;
+    }
+
+    this.getGold = function () {
+        return this.gold;
+    }
+
+    this.setGold = function (gold) {
+        this.gold = gold;
+    }
+
+    this.getWood = function () {
+        return this.wood;
+    }
+
+    this.setWood = function (wood) {
+        this.wood = wood;
+    }
+
+    this.getStone = function () {
+        return this.stone;
+    }
+
+    this.setStone = function (strone) {
+        this.stone = stone;
+    }
+
 }
 
-
-Resources.prototype.getFood = function () {
-    return this.food;
-}
-
-Resources.prototype.getStone = function () {
-    return this.stone;
-}
-
-Resources.prototype.getWood = function () {
-    return this.wood;
-}
-
-Resources.prototype.setWood = function (wood) {
-    this.wood = wood;
-}
-
-Resources.prototype.getGold = function () {
-    return this.gold;
-}

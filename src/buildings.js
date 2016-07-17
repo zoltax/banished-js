@@ -6,7 +6,12 @@ var BUILDING_DB = {
         'cost': {
             'wood' : 10
         },
-        'revenue': 3600,
+        'revenue': {
+            'wood': 3600*3,
+            'food': 0,
+            'gold': 0,
+            'stone':0,
+        }
 
     },
     'house': {
@@ -15,14 +20,33 @@ var BUILDING_DB = {
         'cost' : {
             'gold': 10
         },
-        'revenue' : 0,
+        'revenue' : {
+            'wood': 0,
+            'food': 0,
+            'gold': 3600,
+            'stone':0,
+        }
+    },
+    'windmill': {
+        'type': 'windmill',
+        'icon': 'windmill.png',
+        'cost':  {
+            'gold': 50,
+            'wood': 100,
+        },
+        'revenue': {
+            'wood': 0,
+            'food': 7200,
+            'gold': 0,
+            'stone':0,
+        }
     }
 }
 
 
-function Building(type) {
+function Building() {
 
-    this.buildingType = type;
+    this.buildingType = null;
     this.name = '';
     this.level = 0;
     this.revenue = 0;
@@ -32,12 +56,17 @@ function Building(type) {
         return new Building();
 
     this.fromDb = function (item) {
-        this.buildingType = item.type;
-        this.name = item.type;
-        this.revenue = item.revenue;
-        this.level = 0;
-        this.icon = item.icon;
-        return this;
+        b = new Building();
+
+        b.buildingType = item.type;
+        b.name = item.type;
+
+        revenue = new Resources(item.revenue.wood,item.revenue.food, item.revenue.gold,item.revenue.stone);
+
+        b.revenue = revenue
+        b.level = 0;
+        b.icon = item.icon;
+        return b;
     }
 
     this.setIcon = function (icon) {
@@ -93,20 +122,11 @@ function Buildings(x, y) {
         this.buildings[i] = new Array(y);
     }
 
-    var buildingClass = new Building('a');
-    var c = new Building('a');
+    var buildingClass = new Building();
 
-    var b = buildingClass.fromDb(this.db.sawmill)
-    var c = c.fromDb(this.db.house)
-
-
-
-    console.log(b);
-
-    this.buildings[4][0] = b;
-    this.buildings[4][1] = c;
-
-    console.log(this.buildings);
+    this.buildings[4][0] = buildingClass.fromDb(this.db.sawmill);
+    this.buildings[4][1] = buildingClass.fromDb(this.db.house);
+    this.buildings[4][2] = buildingClass.fromDb(this.db.windmill)
 
     this.buildEventHandling();
 

@@ -31,7 +31,8 @@ Engine.prototype.initResources = function () {
 Engine.prototype.initGame = function () {
     this.game = new Game();
     this.game.setBulidings(this.buildings);
-    this.game.setResources(this.resources);
+    this.game.setBoard(this.board)
+    //this.game.setResources(this.resources);
 }
 
 Engine.prototype.initBuildings = function () {
