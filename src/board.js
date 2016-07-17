@@ -74,7 +74,7 @@ Board.prototype.drawResources = function () {
 Board.prototype.drawCity = function () {
 
     var city  = _.template('<table class="table table-bordered"><tbody><%= text %></tbody></table>');
-    var field = _.template('<td class="field"><%= text %></td>');
+    var field = _.template('<td class="field"><img src="/assets/<%= src %>" width="32px" height="32px" /><%= text %></td>');
     // var build_link = _.template('<a href="#" class="build_link" x="<%=x%>" y="<%=y%>">Build</a>');
     var build_link = _.template('<a href="#modal" class="build_link" x="<%=x%>" y="<%=y%>">Build</a>');
 
@@ -82,20 +82,31 @@ Board.prototype.drawCity = function () {
 
     var buildings = this.buildings.getBuildingsMap();
 
+
     // beauty of the javascript :D
     for ( var i = 0 ; i < this.x; i++ ) {
         b += '<tr>';
         for ( var j = 0; j < this.y; j++ ) {
+
             var t = build_link(
                 {
                     x:j,
                     y:i
                 }
             );
+
+            var img = '';
+
             if ( buildings[j][i]) {
                 t = buildings[j][i].getType();
+                img = buildings[j][i].getIcon();
             }
-            b += field({text: t});
+            b += field(
+                {
+                    src: img,
+                    text: t
+                }
+            );
         }
         b += '</tr>';
 

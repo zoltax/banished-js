@@ -1,17 +1,21 @@
 var BUILDING_DB = {
     'sawmill': {
+        'type': 'sawmill',
         'icon': 'axe.png',
         // should be resource Object :)
         'cost': {
             'wood' : 10
         },
+        'revenue': 3600,
 
     },
     'house': {
+        'type': 'house',
         'icon' : 'house.png',
         'cost' : {
             'gold': 10
-        }
+        },
+        'revenue' : 0,
     }
 }
 
@@ -22,9 +26,27 @@ function Building(type) {
     this.name = '';
     this.level = 0;
     this.revenue = 0;
+    this.icon = null;
 
     if ( ! this instanceof Building)
         return new Building();
+
+    this.fromDb = function (item) {
+        this.buildingType = item.type;
+        this.name = item.type;
+        this.revenue = item.revenue;
+        this.level = 0;
+        this.icon = item.icon;
+        return this;
+    }
+
+    this.setIcon = function (icon) {
+        this.icon = icon;
+    }
+
+    this.getIcon = function () {
+        return this.icon;
+    }
 
 }
 
@@ -63,22 +85,31 @@ function Buildings(x, y) {
     if ( ! this instanceof Buildings)
         return new Buildings();
 
-    this.buildings = []
+    this.db = BUILDING_DB;
+
+    this.buildings = [];
 
     for(var i=0; i<x; i++) {
         this.buildings[i] = new Array(y);
     }
 
-    var b = new Building('Sawmill');
-    b.setRevenue(3800)
+    var buildingClass = new Building('a');
+    var c = new Building('a');
+
+    var b = buildingClass.fromDb(this.db.sawmill)
+    var c = c.fromDb(this.db.house)
+
+
+
+    console.log(b);
 
     this.buildings[4][0] = b;
+    this.buildings[4][1] = c;
+
+    console.log(this.buildings);
 
     this.buildEventHandling();
 
-    this.db = BUILDING_DB;
-
-    console.log(this.db.sawmill)
 }
 
 Buildings.prototype.getBuildingsMap = function () {
