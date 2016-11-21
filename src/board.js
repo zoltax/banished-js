@@ -13,6 +13,24 @@ function Board() {
     if ( ! this instanceof Board )
         return new Board();
 
+    this.showBuildingBubble = function (buildings) {
+        _buildings = _.template('<div class="buildings"><%=buildings %></div>')
+        _building = _.template('<p><img src="<%=img %>"></p>')
+
+        b = Object.keys(buildings).map(function (b) {
+            return _building(
+                {
+                    img: '/assets/' + b + ".png"
+                }
+            )
+        }).reduce(function (a, b) {
+            return a + b;
+        })
+        
+
+        $("#modal_content").html(b)
+    }
+
 }
 
 Board.prototype.getX = function () {

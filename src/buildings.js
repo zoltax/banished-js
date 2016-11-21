@@ -1,7 +1,7 @@
 var BUILDING_DB = {
     'sawmill': {
         'type': 'sawmill',
-        'icon': 'axe.png',
+        'icon': 'sawmill.png',
         // should be resource Object :)
         'cost': {
             'wood' : 10
@@ -56,12 +56,12 @@ function Building() {
         return new Building();
 
     this.fromDb = function (item) {
-        b = new Building();
+        var b = new Building();
 
         b.buildingType = item.type;
         b.name = item.type;
 
-        revenue = new Resources(item.revenue.wood,item.revenue.food, item.revenue.gold,item.revenue.stone);
+        var revenue = new Resources(item.revenue.wood,item.revenue.food, item.revenue.gold,item.revenue.stone);
 
         b.revenue = revenue
         b.level = 0;
@@ -76,6 +76,7 @@ function Building() {
     this.getIcon = function () {
         return this.icon;
     }
+
 
 }
 
@@ -152,6 +153,8 @@ Buildings.prototype.getBuildings = function () {
 
 Buildings.prototype.addBuilding = function (x,y) {
     var b = new Building('Sawmill');
+    engine.board.showBuildingBubble(this.db);
+    // $("#modal_content").text(this.getBuildingsBubble());
     b.setRevenue(3800)
     this.buildings[x][y]
 }
@@ -164,6 +167,7 @@ Buildings.prototype.buildEventHandling = function () {
         $(".build_link").click(function (event) {
 
             var target = event.target;
+
             var x = $(target).attr('x');
             var y = $(target).attr('y');
 

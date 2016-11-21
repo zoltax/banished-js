@@ -35,7 +35,7 @@ Game.prototype.update = function () {
         self.resources.gold = self.resources.gold +  (building.getRevenue().gold / 3600);
         self.resources.stone = self.resources.stone + (building.getRevenue().stone / 3600);
 
-    })
+    });
 
 
     this.board.setResources(self.resources);
